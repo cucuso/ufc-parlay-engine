@@ -1,0 +1,210 @@
+{
+  "book_odds": {
+    "Moicano": {
+      "ml": 140,
+      "by_ko": 1200,
+      "by_sub": 500,
+      "by_dec": 350
+    },
+    "Duncan": {
+      "ml": -166,
+      "by_ko": -110,
+      "by_sub": 800,
+      "by_dec": 350
+    },
+    "Jandiroba": {
+      "ml": -130,
+      "by_ko": 2500,
+      "by_sub": 300,
+      "by_dec": 200
+    },
+    "Ricci": {
+      "ml": 110,
+      "by_ko": 500,
+      "by_sub": 1200,
+      "by_dec": -110
+    },
+    "Yakhyaev": {
+      "ml": -1700,
+      "by_ko": -110,
+      "by_sub": 1500,
+      "by_dec": 200
+    },
+    "Ribeiro": {
+      "ml": 905,
+      "by_ko": 400,
+      "by_sub": 600,
+      "by_dec": 700
+    },
+    "Estevam": {
+      "ml": 120,
+      "by_ko": 350,
+      "by_sub": 600,
+      "by_dec": 110
+    },
+    "Ewing": {
+      "ml": -145,
+      "by_ko": 400,
+      "by_sub": 800,
+      "by_dec": 350
+    },
+    "McMillen": {
+      "ml": -1400,
+      "by_ko": -110,
+      "by_sub": 500,
+      "by_dec": 300
+    },
+    "Zecchini": {
+      "ml": 800,
+      "by_ko": 700,
+      "by_sub": 1000,
+      "by_dec": 800
+    },
+    "Ruchala": {
+      "ml": 260,
+      "by_ko": 450,
+      "by_sub": 1200,
+      "by_dec": 500
+    },
+    "Delano": {
+      "ml": -320,
+      "by_ko": 200,
+      "by_sub": 400,
+      "by_dec": 110
+    },
+    "Vannata": {
+      "ml": -225,
+      "by_ko": 150,
+      "by_sub": 600,
+      "by_dec": 200
+    },
+    "Flowers": {
+      "ml": 185,
+      "by_ko": 350,
+      "by_sub": 800,
+      "by_dec": 300
+    },
+    "Bekoev": {
+      "ml": -650,
+      "by_ko": 100,
+      "by_sub": 400,
+      "by_dec": 200
+    },
+    "Gore": {
+      "ml": 475,
+      "by_ko": 700,
+      "by_sub": 3000,
+      "by_dec": 1500
+    },
+    "Petersen": {
+      "ml": -118,
+      "by_ko": 300,
+      "by_sub": 800,
+      "by_dec": 175
+    },
+    "Pat": {
+      "ml": -104,
+      "by_ko": 300,
+      "by_sub": 500,
+      "by_dec": 250
+    },
+    "Costa": {
+      "ml": -415,
+      "by_ko": 100,
+      "by_sub": 400,
+      "by_dec": 200
+    },
+    "Nicoll": {
+      "ml": 312,
+      "by_ko": 600,
+      "by_sub": 1000,
+      "by_dec": 800
+    },
+    "Gatto": {
+      "ml": 110,
+      "by_ko": 500,
+      "by_sub": 300,
+      "by_dec": 110
+    },
+    "Barbosa": {
+      "ml": -130,
+      "by_ko": 600,
+      "by_sub": 800,
+      "by_dec": 200
+    },
+    "Cowan": {
+      "ml": 112,
+      "by_ko": 500,
+      "by_sub": 400,
+      "by_dec": 225
+    },
+    "Pereira": {
+      "ml": -135,
+      "by_ko": 400,
+      "by_sub": 350,
+      "by_dec": 150
+    }
+  },
+  "round_props": {
+    "Moicano|Duncan": {
+      "line": 2.5,
+      "over": 114,
+      "under": -135
+    },
+    "Jandiroba|Ricci": {
+      "line": 2.5,
+      "over": -450,
+      "under": 339
+    },
+    "Yakhyaev|Ribeiro": {
+      "line": 1.5,
+      "over": 350,
+      "under": -450
+    },
+    "Estevam|Ewing": {
+      "line": 2.5,
+      "over": -185,
+      "under": 154
+    },
+    "McMillen|Zecchini": {
+      "line": 1.5,
+      "over": 114,
+      "under": -130
+    },
+    "Ruchala|Delano": {
+      "line": 2.5,
+      "over": -155,
+      "under": 130
+    },
+    "Vannata|Flowers": {
+      "line": 1.5,
+      "over": -200,
+      "under": 166
+    },
+    "Bekoev|Gore": {
+      "line": 1.5,
+      "over": -175,
+      "under": 146
+    },
+    "Petersen|Pat": {
+      "line": 2.5,
+      "over": -110,
+      "under": -110
+    },
+    "Costa|Nicoll": {
+      "line": 2.5,
+      "over": 100,
+      "under": -120
+    },
+    "Gatto|Barbosa": {
+      "line": 2.5,
+      "over": -265,
+      "under": 225
+    },
+    "Cowan|Pereira": {
+      "line": 2.5,
+      "over": -300,
+      "under": 246
+    }
+  }
+}

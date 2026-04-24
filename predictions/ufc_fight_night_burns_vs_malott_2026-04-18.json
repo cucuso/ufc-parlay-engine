@@ -1,0 +1,327 @@
+{
+  "event": "UFC Fight Night: Burns vs. Malott",
+  "event_date": "2026-04-18",
+  "generated_at": "2026-04-20T11:38:51",
+  "notes": null,
+  "fights": [
+    {
+      "fighter_a": "Gilbert Burns",
+      "fighter_b": "Mike Malott",
+      "weight_class": "Welterweight",
+      "is_main_event": true,
+      "elo_a": 1927.1014708185305,
+      "elo_b": 1926.2851107462923,
+      "age_a": 39,
+      "age_b": 34,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Mike Malott",
+      "loser": "Gilbert Burns",
+      "win_prob": 0.526,
+      "method": "KO/TKO",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3717,
+        "KO/TKO": 0.4537,
+        "SUB": 0.1745
+      },
+      "round_probs": {
+        "ends_r1": 0.2082,
+        "reaches_r2": 0.7918,
+        "reaches_r3": 0.5726,
+        "goes_distance": 0.3717
+      },
+      "fight_key": "Gilbert Burns|Mike Malott"
+    },
+    {
+      "fighter_a": "Kyler Phillips",
+      "fighter_b": "Charles Jourdain",
+      "weight_class": "Bantamweight",
+      "is_main_event": false,
+      "elo_a": 1750.9873613709578,
+      "elo_b": 1849.6805622713032,
+      "age_a": 30,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Kyler Phillips",
+      "loser": "Charles Jourdain",
+      "win_prob": 0.5061,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4155,
+        "KO/TKO": 0.4109,
+        "SUB": 0.1736
+      },
+      "round_probs": {
+        "ends_r1": 0.1327,
+        "reaches_r2": 0.8673,
+        "reaches_r3": 0.6603,
+        "goes_distance": 0.4155
+      },
+      "fight_key": "Charles Jourdain|Kyler Phillips"
+    },
+    {
+      "fighter_a": "Mandel Nallo",
+      "fighter_b": "Jai Herbert",
+      "weight_class": "Lightweight",
+      "is_main_event": false,
+      "elo_a": 1678.2952698459553,
+      "elo_b": 1735.266188259335,
+      "age_a": 36,
+      "age_b": 37,
+      "debut_a": true,
+      "debut_b": false,
+      "winner": "Mandel Nallo",
+      "loser": "Jai Herbert",
+      "win_prob": 0.5527,
+      "method": "KO/TKO",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4407,
+        "KO/TKO": 0.4494,
+        "SUB": 0.1098
+      },
+      "round_probs": {
+        "ends_r1": 0.2768,
+        "reaches_r2": 0.7232,
+        "reaches_r3": 0.5269,
+        "goes_distance": 0.4407
+      },
+      "fight_key": "Jai Herbert|Mandel Nallo"
+    },
+    {
+      "fighter_a": "Jasmine Jasudavicius",
+      "fighter_b": "Karine Silva",
+      "weight_class": "W-Flyweight",
+      "is_main_event": false,
+      "elo_a": 1881.8845232882527,
+      "elo_b": 1750.717402177095,
+      "age_a": 37,
+      "age_b": 32,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Jasmine Jasudavicius",
+      "loser": "Karine Silva",
+      "win_prob": 0.6248,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4015,
+        "KO/TKO": 0.3584,
+        "SUB": 0.2401
+      },
+      "round_probs": {
+        "ends_r1": 0.1817,
+        "reaches_r2": 0.8183,
+        "reaches_r3": 0.5973,
+        "goes_distance": 0.4015
+      },
+      "fight_key": "Jasmine Jasudavicius|Karine Silva"
+    },
+    {
+      "fighter_a": "Thiago Moises",
+      "fighter_b": "Gauge Young",
+      "weight_class": "Lightweight",
+      "is_main_event": false,
+      "elo_a": 1664.381944793041,
+      "elo_b": 1703.020115059818,
+      "age_a": 31,
+      "age_b": 25,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Gauge Young",
+      "loser": "Thiago Moises",
+      "win_prob": 0.5452,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.3262,
+        "KO/TKO": 0.4874,
+        "SUB": 0.1864
+      },
+      "round_probs": {
+        "ends_r1": 0.3155,
+        "reaches_r2": 0.6845,
+        "reaches_r3": 0.4514,
+        "goes_distance": 0.3262
+      },
+      "fight_key": "Gauge Young|Thiago Moises"
+    },
+    {
+      "fighter_a": "Dennis Buzukja",
+      "fighter_b": "Marcio Barbosa",
+      "weight_class": "Featherweight",
+      "is_main_event": false,
+      "elo_a": 1543.5478115084798,
+      "elo_b": 1812.3388491158414,
+      "age_a": 28,
+      "age_b": 27,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Marcio Barbosa",
+      "loser": "Dennis Buzukja",
+      "win_prob": 0.7054,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4431,
+        "KO/TKO": 0.4398,
+        "SUB": 0.1171
+      },
+      "round_probs": {
+        "ends_r1": 0.1655,
+        "reaches_r2": 0.8345,
+        "reaches_r3": 0.5965,
+        "goes_distance": 0.4431
+      },
+      "fight_key": "Dennis Buzukja|Marcio Barbosa"
+    },
+    {
+      "fighter_a": "Julien Leblanc",
+      "fighter_b": "Robert Valentin",
+      "weight_class": "Middleweight",
+      "is_main_event": false,
+      "elo_a": 1616.0247793406525,
+      "elo_b": 1615.0999017712577,
+      "age_a": 34,
+      "age_b": 31,
+      "debut_a": true,
+      "debut_b": false,
+      "winner": "Robert Valentin",
+      "loser": "Julien Leblanc",
+      "win_prob": 0.5252,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.3629,
+        "KO/TKO": 0.451,
+        "SUB": 0.1861
+      },
+      "round_probs": {
+        "ends_r1": 0.3393,
+        "reaches_r2": 0.6607,
+        "reaches_r3": 0.4209,
+        "goes_distance": 0.3629
+      },
+      "fight_key": "Julien Leblanc|Robert Valentin"
+    },
+    {
+      "fighter_a": "Tanner Boser",
+      "fighter_b": "Gokhan Saricam",
+      "weight_class": "Heavyweight",
+      "is_main_event": false,
+      "elo_a": 1572.2071818904965,
+      "elo_b": 1778.6207625071402,
+      "age_a": 34,
+      "age_b": 35,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Gokhan Saricam",
+      "loser": "Tanner Boser",
+      "win_prob": 0.6137,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.444,
+        "KO/TKO": 0.4384,
+        "SUB": 0.1177
+      },
+      "round_probs": {
+        "ends_r1": 0.235,
+        "reaches_r2": 0.765,
+        "reaches_r3": 0.5886,
+        "goes_distance": 0.444
+      },
+      "fight_key": "Gokhan Saricam|Tanner Boser"
+    },
+    {
+      "fighter_a": "Melissa Croden",
+      "fighter_b": "Daria Zhelezniakova",
+      "weight_class": "W-Bantamweight",
+      "is_main_event": false,
+      "elo_a": 1710.5919426459577,
+      "elo_b": 1679.6860941792113,
+      "age_a": 35,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Daria Zhelezniakova",
+      "loser": "Melissa Croden",
+      "win_prob": 0.5136,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.5145,
+        "KO/TKO": 0.3703,
+        "SUB": 0.1152
+      },
+      "round_probs": {
+        "ends_r1": 0.1848,
+        "reaches_r2": 0.8152,
+        "reaches_r3": 0.6129,
+        "goes_distance": 0.5145
+      },
+      "fight_key": "Daria Zhelezniakova|Melissa Croden"
+    },
+    {
+      "fighter_a": "JJ Aldrich",
+      "fighter_b": "Jamey-Lyn Horth",
+      "weight_class": "W-Flyweight",
+      "is_main_event": false,
+      "elo_a": 1696.7746198057212,
+      "elo_b": 1670.279363470879,
+      "age_a": 33,
+      "age_b": 36,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "JJ Aldrich",
+      "loser": "Jamey-Lyn Horth",
+      "win_prob": 0.5471,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4591,
+        "KO/TKO": 0.3727,
+        "SUB": 0.1681
+      },
+      "round_probs": {
+        "ends_r1": 0.1597,
+        "reaches_r2": 0.8403,
+        "reaches_r3": 0.6505,
+        "goes_distance": 0.4591
+      },
+      "fight_key": "JJ Aldrich|Jamey-Lyn Horth"
+    },
+    {
+      "fighter_a": "John Castaneda",
+      "fighter_b": "Mark Vologdin",
+      "weight_class": "Bantamweight",
+      "is_main_event": false,
+      "elo_a": 1745.0594770607759,
+      "elo_b": 1710.5633484837085,
+      "age_a": 34,
+      "age_b": 26,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "John Castaneda",
+      "loser": "Mark Vologdin",
+      "win_prob": 0.6325,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4714,
+        "KO/TKO": 0.361,
+        "SUB": 0.1676
+      },
+      "round_probs": {
+        "ends_r1": 0.2239,
+        "reaches_r2": 0.7761,
+        "reaches_r3": 0.6208,
+        "goes_distance": 0.4714
+      },
+      "fight_key": "John Castaneda|Mark Vologdin"
+    }
+  ]
+}
