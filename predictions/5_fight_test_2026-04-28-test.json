@@ -1,0 +1,203 @@
+{
+  "event": "5-fight test",
+  "event_date": "2026-04-28-test",
+  "generated_at": "2026-04-28T09:44:30",
+  "notes": null,
+  "fights": [
+    {
+      "fighter_a": "Jackson McVey",
+      "fighter_b": "Sedriques Dumas",
+      "weight_class": "Middleweight",
+      "is_main_event": false,
+      "elo_a": 1414.711555423506,
+      "elo_b": 1419.7014865062904,
+      "age_a": 27,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Sedriques Dumas",
+      "loser": "Jackson McVey",
+      "win_prob": 0.6458,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.299,
+        "KO/TKO": 0.3757,
+        "SUB": 0.3253
+      },
+      "round_probs": {
+        "ends_r1": 0.2635,
+        "reaches_r2": 0.7365,
+        "reaches_r3": 0.2979,
+        "goes_distance": 0.299
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.8888888888888888,
+        "decision_rate": 0.0,
+        "avg_fight_seconds": 138.0
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.5,
+        "decision_rate": 0.25,
+        "avg_fight_seconds": 395.0625
+      },
+      "fight_key": "Jackson McVey|Sedriques Dumas"
+    },
+    {
+      "fighter_a": "Dennis Buzukja",
+      "fighter_b": "Marcio Barbosa",
+      "weight_class": "Featherweight",
+      "is_main_event": false,
+      "elo_a": 1537.1347625172402,
+      "elo_b": 1812.3388491158414,
+      "age_a": 28,
+      "age_b": 27,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Marcio Barbosa",
+      "loser": "Dennis Buzukja",
+      "win_prob": 0.6947,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4606,
+        "KO/TKO": 0.4223,
+        "SUB": 0.1172
+      },
+      "round_probs": {
+        "ends_r1": 0.2014,
+        "reaches_r2": 0.7985,
+        "reaches_r3": 0.5175,
+        "goes_distance": 0.4606
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.3333333333333333,
+        "decision_rate": 0.5555555555555556,
+        "avg_fight_seconds": 608.5555555555555
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.85,
+        "decision_rate": 0.05,
+        "avg_fight_seconds": 213.7
+      },
+      "fight_key": "Dennis Buzukja|Marcio Barbosa"
+    },
+    {
+      "fighter_a": "Tommy McMillen",
+      "fighter_b": "Manolo Zecchini",
+      "weight_class": "Featherweight",
+      "is_main_event": false,
+      "elo_a": 1500.0,
+      "elo_b": 1332.0,
+      "age_a": 28,
+      "age_b": 29,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Tommy McMillen",
+      "loser": "Manolo Zecchini",
+      "win_prob": 0.7318,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4763,
+        "KO/TKO": 0.4034,
+        "SUB": 0.1203
+      },
+      "round_probs": {
+        "ends_r1": 0.4373,
+        "reaches_r2": 0.5627,
+        "reaches_r3": 0.5097,
+        "goes_distance": 0.4763
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.9,
+        "decision_rate": 0.1,
+        "avg_fight_seconds": 187.5
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.75,
+        "decision_rate": 0.125,
+        "avg_fight_seconds": 270.6875
+      },
+      "fight_key": "Manolo Zecchini|Tommy McMillen"
+    },
+    {
+      "fighter_a": "Renato Moicano",
+      "fighter_b": "Chris Duncan",
+      "weight_class": "Lightweight",
+      "is_main_event": true,
+      "elo_a": 2012.3540733723064,
+      "elo_b": 1899.0163093302504,
+      "age_a": 36,
+      "age_b": 32,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Renato Moicano",
+      "loser": "Chris Duncan",
+      "win_prob": 0.5338,
+      "method": "DEC",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.3539,
+        "KO/TKO": 0.2967,
+        "SUB": 0.3494
+      },
+      "round_probs": {
+        "ends_r1": 0.2093,
+        "reaches_r2": 0.7907,
+        "reaches_r3": 0.3837,
+        "goes_distance": 0.3539
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.2413793103448276,
+        "decision_rate": 0.3448275862068966,
+        "avg_fight_seconds": 607.551724137931
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.3888888888888889,
+        "decision_rate": 0.2222222222222222,
+        "avg_fight_seconds": 451.55555555555554
+      },
+      "fight_key": "Chris Duncan|Renato Moicano"
+    },
+    {
+      "fighter_a": "Movsar Evloev",
+      "fighter_b": "Lerone Murphy",
+      "weight_class": "Featherweight",
+      "is_main_event": true,
+      "elo_a": 2212.9418715718084,
+      "elo_b": 2167.0874372032567,
+      "age_a": 32,
+      "age_b": 34,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Movsar Evloev",
+      "loser": "Lerone Murphy",
+      "win_prob": 0.6636,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4382,
+        "KO/TKO": 0.3642,
+        "SUB": 0.1976
+      },
+      "round_probs": {
+        "ends_r1": 0.1427,
+        "reaches_r2": 0.8572,
+        "reaches_r3": 0.6272,
+        "goes_distance": 0.4382
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.1,
+        "decision_rate": 0.65,
+        "avg_fight_seconds": 816.65
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.3684210526315789,
+        "decision_rate": 0.5263157894736842,
+        "avg_fight_seconds": 687.1052631578947
+      },
+      "fight_key": "Lerone Murphy|Movsar Evloev"
+    }
+  ]
+}

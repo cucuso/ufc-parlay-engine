@@ -1,0 +1,385 @@
+{
+  "event": "UFC Fight Night: Sterling vs. Zalal",
+  "event_date": "2026-04-25",
+  "generated_at": "2026-04-24T16:13:33",
+  "notes": null,
+  "fights": [
+    {
+      "fighter_a": "Aljamain Sterling",
+      "fighter_b": "Youssef Zalal",
+      "weight_class": "Featherweight",
+      "is_main_event": true,
+      "elo_a": 2149.8468228253737,
+      "elo_b": 1933.647513225197,
+      "age_a": 36,
+      "age_b": 29,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Aljamain Sterling",
+      "loser": "Youssef Zalal",
+      "win_prob": 0.5778,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4413,
+        "KO/TKO": 0.3346,
+        "SUB": 0.2242
+      },
+      "round_probs": {
+        "ends_r1": 0.1815,
+        "reaches_r2": 0.8185,
+        "reaches_r3": 0.608,
+        "goes_distance": 0.4413
+      },
+      "fight_key": "Aljamain Sterling|Youssef Zalal"
+    },
+    {
+      "fighter_a": "Norma Dumont",
+      "fighter_b": "Joselyne Edwards",
+      "weight_class": "W-Bantamweight",
+      "is_main_event": true,
+      "elo_a": 1903.5210856259691,
+      "elo_b": 1724.3303409566936,
+      "age_a": 35,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Norma Dumont",
+      "loser": "Joselyne Edwards",
+      "win_prob": 0.748,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4586,
+        "KO/TKO": 0.3067,
+        "SUB": 0.2347
+      },
+      "round_probs": {
+        "ends_r1": 0.2086,
+        "reaches_r2": 0.7914,
+        "reaches_r3": 0.5941,
+        "goes_distance": 0.4586
+      },
+      "fight_key": "Joselyne Edwards|Norma Dumont"
+    },
+    {
+      "fighter_a": "Rafa Garcia",
+      "fighter_b": "Alexander Hernandez",
+      "weight_class": "Lightweight",
+      "is_main_event": true,
+      "elo_a": 1841.914863775427,
+      "elo_b": 1800.7315200004268,
+      "age_a": 31,
+      "age_b": 33,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Rafa Garcia",
+      "loser": "Alexander Hernandez",
+      "win_prob": 0.593,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4457,
+        "KO/TKO": 0.4042,
+        "SUB": 0.1501
+      },
+      "round_probs": {
+        "ends_r1": 0.1665,
+        "reaches_r2": 0.8335,
+        "reaches_r3": 0.6208,
+        "goes_distance": 0.4457
+      },
+      "fight_key": "Alexander Hernandez|Rafa Garcia"
+    },
+    {
+      "fighter_a": "Davey Grant",
+      "fighter_b": "Adrian Luna Martinetti",
+      "weight_class": "Bantamweight",
+      "is_main_event": true,
+      "elo_a": 1753.460984077129,
+      "elo_b": 1858.61615100847,
+      "age_a": 40,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Adrian Luna Martinetti",
+      "loser": "Davey Grant",
+      "win_prob": 0.6081,
+      "method": "KO/TKO",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3695,
+        "KO/TKO": 0.4031,
+        "SUB": 0.2274
+      },
+      "round_probs": {
+        "ends_r1": 0.1628,
+        "reaches_r2": 0.8372,
+        "reaches_r3": 0.6041,
+        "goes_distance": 0.3695
+      },
+      "fight_key": "Adrian Luna Martinetti|Davey Grant"
+    },
+    {
+      "fighter_a": "Montel Jackson",
+      "fighter_b": "Raoni Barcelos",
+      "weight_class": "Bantamweight",
+      "is_main_event": true,
+      "elo_a": 1890.2132276078075,
+      "elo_b": 1890.663619982945,
+      "age_a": 33,
+      "age_b": 38,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Montel Jackson",
+      "loser": "Raoni Barcelos",
+      "win_prob": 0.5225,
+      "method": "KO/TKO",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3989,
+        "KO/TKO": 0.4187,
+        "SUB": 0.1824
+      },
+      "round_probs": {
+        "ends_r1": 0.1605,
+        "reaches_r2": 0.8395,
+        "reaches_r3": 0.6189,
+        "goes_distance": 0.3989
+      },
+      "fight_key": "Montel Jackson|Raoni Barcelos"
+    },
+    {
+      "fighter_a": "Marcus Buchecha",
+      "fighter_b": "Ryan Spann",
+      "weight_class": "Heavyweight",
+      "is_main_event": false,
+      "elo_a": 1664.171628050689,
+      "elo_b": 1735.5486423463265,
+      "age_a": 36,
+      "age_b": 34,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Marcus Buchecha",
+      "loser": "Ryan Spann",
+      "win_prob": 0.5787,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.2975,
+        "KO/TKO": 0.5019,
+        "SUB": 0.2006
+      },
+      "round_probs": {
+        "ends_r1": 0.4706,
+        "reaches_r2": 0.5294,
+        "reaches_r3": 0.3329,
+        "goes_distance": 0.2975
+      },
+      "fight_key": "Marcus Buchecha|Ryan Spann"
+    },
+    {
+      "fighter_a": "Rodolfo Vieira",
+      "fighter_b": "Eric McConico",
+      "weight_class": "Middleweight",
+      "is_main_event": false,
+      "elo_a": 1678.9315436843397,
+      "elo_b": 1593.5967601934217,
+      "age_a": 36,
+      "age_b": 35,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Rodolfo Vieira",
+      "loser": "Eric McConico",
+      "win_prob": 0.5487,
+      "method": "DEC",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.427,
+        "KO/TKO": 0.3975,
+        "SUB": 0.1755
+      },
+      "round_probs": {
+        "ends_r1": 0.2004,
+        "reaches_r2": 0.7996,
+        "reaches_r3": 0.457,
+        "goes_distance": 0.427
+      },
+      "fight_key": "Eric McConico|Rodolfo Vieira"
+    },
+    {
+      "fighter_a": "Jackson McVey",
+      "fighter_b": "Sedriques Dumas",
+      "weight_class": "Middleweight",
+      "is_main_event": false,
+      "elo_a": 1612.541600752257,
+      "elo_b": 1568.397128905477,
+      "age_a": 27,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Sedriques Dumas",
+      "loser": "Jackson McVey",
+      "win_prob": 0.5335,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.3497,
+        "KO/TKO": 0.4736,
+        "SUB": 0.1768
+      },
+      "round_probs": {
+        "ends_r1": 0.2616,
+        "reaches_r2": 0.7384,
+        "reaches_r3": 0.4705,
+        "goes_distance": 0.3497
+      },
+      "fight_key": "Jackson McVey|Sedriques Dumas"
+    },
+    {
+      "fighter_a": "Mayra Bueno Silva",
+      "fighter_b": "Michelle Montague",
+      "weight_class": "W-Bantamweight",
+      "is_main_event": false,
+      "elo_a": 1661.1640569347906,
+      "elo_b": 1761.6756339844733,
+      "age_a": 34,
+      "age_b": 32,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Michelle Montague",
+      "loser": "Mayra Bueno Silva",
+      "win_prob": 0.5257,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4852,
+        "KO/TKO": 0.2866,
+        "SUB": 0.2282
+      },
+      "round_probs": {
+        "ends_r1": 0.2068,
+        "reaches_r2": 0.7932,
+        "reaches_r3": 0.5976,
+        "goes_distance": 0.4852
+      },
+      "fight_key": "Mayra Bueno Silva|Michelle Montague"
+    },
+    {
+      "fighter_a": "Jafel Filho",
+      "fighter_b": "Cody Durden",
+      "weight_class": "Flyweight",
+      "is_main_event": false,
+      "elo_a": 1792.315586574005,
+      "elo_b": 1541.1378331729807,
+      "age_a": 32,
+      "age_b": 35,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Jafel Filho",
+      "loser": "Cody Durden",
+      "win_prob": 0.7691,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4247,
+        "KO/TKO": 0.297,
+        "SUB": 0.2783
+      },
+      "round_probs": {
+        "ends_r1": 0.1833,
+        "reaches_r2": 0.8167,
+        "reaches_r3": 0.5231,
+        "goes_distance": 0.4247
+      },
+      "fight_key": "Cody Durden|Jafel Filho"
+    },
+    {
+      "fighter_a": "Francis Marshall",
+      "fighter_b": "Lucas Brennan",
+      "weight_class": "Lightweight",
+      "is_main_event": false,
+      "elo_a": 1651.6203240976067,
+      "elo_b": 1724.913640358657,
+      "age_a": 27,
+      "age_b": 25,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Francis Marshall",
+      "loser": "Lucas Brennan",
+      "win_prob": 0.5058,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3996,
+        "KO/TKO": 0.3408,
+        "SUB": 0.2596
+      },
+      "round_probs": {
+        "ends_r1": 0.2722,
+        "reaches_r2": 0.7278,
+        "reaches_r3": 0.529,
+        "goes_distance": 0.3996
+      },
+      "fight_key": "Francis Marshall|Lucas Brennan"
+    },
+    {
+      "fighter_a": "Max Griffin",
+      "fighter_b": "Victor Valenzuela",
+      "weight_class": "Welterweight",
+      "is_main_event": false,
+      "elo_a": 1711.2665129956592,
+      "elo_b": 1679.1037155616712,
+      "age_a": 40,
+      "age_b": 32,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Max Griffin",
+      "loser": "Victor Valenzuela",
+      "win_prob": 0.6169,
+      "method": "KO/TKO",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3895,
+        "KO/TKO": 0.4694,
+        "SUB": 0.1411
+      },
+      "round_probs": {
+        "ends_r1": 0.3247,
+        "reaches_r2": 0.6753,
+        "reaches_r3": 0.5182,
+        "goes_distance": 0.3895
+      },
+      "fight_key": "Max Griffin|Victor Valenzuela"
+    },
+    {
+      "fighter_a": "Talita Alencar",
+      "fighter_b": "Julia Polastri",
+      "weight_class": "W-Strawweight",
+      "is_main_event": false,
+      "elo_a": 1707.4345123591313,
+      "elo_b": 1734.1111636611433,
+      "age_a": 35,
+      "age_b": 28,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Julia Polastri",
+      "loser": "Talita Alencar",
+      "win_prob": 0.6104,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.3829,
+        "KO/TKO": 0.3458,
+        "SUB": 0.2713
+      },
+      "round_probs": {
+        "ends_r1": 0.3046,
+        "reaches_r2": 0.6954,
+        "reaches_r3": 0.5865,
+        "goes_distance": 0.3829
+      },
+      "fight_key": "Julia Polastri|Talita Alencar"
+    }
+  ]
+}

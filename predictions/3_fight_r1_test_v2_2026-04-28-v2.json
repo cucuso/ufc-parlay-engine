@@ -1,0 +1,125 @@
+{
+  "event": "3-fight R1 test v2",
+  "event_date": "2026-04-28-v2",
+  "generated_at": "2026-04-28T09:41:39",
+  "notes": null,
+  "fights": [
+    {
+      "fighter_a": "Jackson McVey",
+      "fighter_b": "Sedriques Dumas",
+      "weight_class": "Middleweight",
+      "is_main_event": false,
+      "elo_a": 1414.711555423506,
+      "elo_b": 1419.7014865062904,
+      "age_a": 27,
+      "age_b": 30,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Sedriques Dumas",
+      "loser": "Jackson McVey",
+      "win_prob": 0.6458,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.299,
+        "KO/TKO": 0.3757,
+        "SUB": 0.3253
+      },
+      "round_probs": {
+        "ends_r1": 0.2635,
+        "reaches_r2": 0.7365,
+        "reaches_r3": 0.2979,
+        "goes_distance": 0.299
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.8888888888888888,
+        "decision_rate": 0.0,
+        "avg_fight_seconds": 138.0
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.5,
+        "decision_rate": 0.25,
+        "avg_fight_seconds": 395.0625
+      },
+      "fight_key": "Jackson McVey|Sedriques Dumas"
+    },
+    {
+      "fighter_a": "Dennis Buzukja",
+      "fighter_b": "Marcio Barbosa",
+      "weight_class": "Featherweight",
+      "is_main_event": false,
+      "elo_a": 1537.1347625172402,
+      "elo_b": 1812.3388491158414,
+      "age_a": 28,
+      "age_b": 27,
+      "debut_a": false,
+      "debut_b": true,
+      "winner": "Marcio Barbosa",
+      "loser": "Dennis Buzukja",
+      "win_prob": 0.6947,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4606,
+        "KO/TKO": 0.4223,
+        "SUB": 0.1172
+      },
+      "round_probs": {
+        "ends_r1": 0.2014,
+        "reaches_r2": 0.7985,
+        "reaches_r3": 0.5175,
+        "goes_distance": 0.4606
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.3333333333333333,
+        "decision_rate": 0.5555555555555556,
+        "avg_fight_seconds": 608.5555555555555
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.85,
+        "decision_rate": 0.05,
+        "avg_fight_seconds": 213.7
+      },
+      "fight_key": "Dennis Buzukja|Marcio Barbosa"
+    },
+    {
+      "fighter_a": "Tommy McMillen",
+      "fighter_b": "Manolo Zecchini",
+      "weight_class": "Featherweight",
+      "is_main_event": false,
+      "elo_a": 1500.0,
+      "elo_b": 1332.0,
+      "age_a": 28,
+      "age_b": 29,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Tommy McMillen",
+      "loser": "Manolo Zecchini",
+      "win_prob": 0.7318,
+      "method": "DEC",
+      "round": 3,
+      "method_probs": {
+        "DEC": 0.4763,
+        "KO/TKO": 0.4034,
+        "SUB": 0.1203
+      },
+      "round_probs": {
+        "ends_r1": 0.4373,
+        "reaches_r2": 0.5627,
+        "reaches_r3": 0.5097,
+        "goes_distance": 0.4763
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.9,
+        "decision_rate": 0.1,
+        "avg_fight_seconds": 187.5
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.75,
+        "decision_rate": 0.125,
+        "avg_fight_seconds": 270.6875
+      },
+      "fight_key": "Manolo Zecchini|Tommy McMillen"
+    }
+  ]
+}

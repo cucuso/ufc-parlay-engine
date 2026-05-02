@@ -1,0 +1,53 @@
+{
+  "event": "MVP test",
+  "event_date": "2026-04-28-mvp",
+  "generated_at": "2026-04-28T09:51:47",
+  "notes": null,
+  "fights": [
+    {
+      "fighter_a": "Michael Page",
+      "fighter_b": "Sam Patterson",
+      "weight_class": "Welterweight",
+      "is_main_event": true,
+      "elo_a": 1948.212069372937,
+      "elo_b": 1887.0864119235343,
+      "age_a": 39,
+      "age_b": 29,
+      "debut_a": false,
+      "debut_b": false,
+      "winner": "Michael Page",
+      "loser": "Sam Patterson",
+      "win_prob": 0.6415,
+      "method": "KO/TKO",
+      "round": 2,
+      "method_probs": {
+        "DEC": 0.2847,
+        "KO/TKO": 0.5283,
+        "SUB": 0.187
+      },
+      "round_probs": {
+        "ends_r1": 0.3491,
+        "reaches_r2": 0.651,
+        "reaches_r3": 0.3561,
+        "goes_distance": 0.2847
+      },
+      "pace_a": {
+        "r1_ending_rate": 0.4642857142857143,
+        "decision_rate": 0.39285714285714285,
+        "avg_fight_seconds": 517.0357142857143,
+        "sub_win_rate": 0.12,
+        "ko_win_rate": 0.52,
+        "finish_rate": 0.64
+      },
+      "pace_b": {
+        "r1_ending_rate": 0.5555555555555556,
+        "decision_rate": 0.1111111111111111,
+        "avg_fight_seconds": 373.3333333333333,
+        "sub_win_rate": 0.5,
+        "ko_win_rate": 0.42857142857142855,
+        "finish_rate": 0.9285714285714286
+      },
+      "fight_key": "Michael Page|Sam Patterson"
+    }
+  ]
+}

@@ -430,6 +430,136 @@ def parse_espn_data(data: dict) -> dict:
 
 
 # ============================================================
+# FIGHT-PACE SIGNATURE — 7 features mirroring build_training_data.py
+# ============================================================
+
+def _parse_time_to_seconds(time_str: str) -> int:
+    """Convert "M:SS" or "MM:SS" round-time string to seconds."""
+    try:
+        m, s = str(time_str).split(":")
+        return int(m) * 60 + int(s)
+    except (ValueError, AttributeError):
+        return 0
+
+
+def compute_pace_signature(fights: list) -> dict:
+    """Mirror of FighterStats._pace_signature_features() in build_training_data.py.
+
+    Computes the same 7 fight-pace features from a live fight history list.
+    `fights` is the chronological list returned by parse_espn_data (oldest
+    first), each entry containing: result ("W"/"L"/...), method ("KO/TKO" |
+    "SUB" | "DEC" | "OTHER"), round (int), time ("M:SS").
+    """
+    n = len(fights)
+    if n == 0:
+        return {
+            "r1_ending_rate": 0.0,
+            "r1_ending_rate_5": 0.0,
+            "decision_rate": 0.0,
+            "decision_rate_5": 0.0,
+            "sub_win_rate_5": 0.0,
+            "ko_win_rate_5": 0.0,
+            "avg_fight_seconds": 600.0,
+            "recent_3_finish_loss_rate": 0.0,
+            "recent_5_finish_loss_rate": 0.0,
+            "recent_5_r1_loss_rate": 0.0,
+        }
+
+    rounds = [int(f.get("round", 3) or 3) for f in fights]
+    methods = [str(f.get("method", "OTHER")) for f in fights]
+    results = [str(f.get("result", "")).upper() for f in fights]
+    fight_seconds = [
+        max(0, (rounds[i] - 1) * 300) + _parse_time_to_seconds(f.get("time", "0:00"))
+        for i, f in enumerate(fights)
+    ]
+
+    # Career
+    r1_ending_rate = sum(1 for r in rounds if r == 1) / n
+    decision_rate = sum(1 for m in methods if m == "DEC") / n
+    avg_fight_seconds = float(sum(fight_seconds)) / n if fight_seconds else 600.0
+
+    # Last 5 — captures current style, not career average
+    last5_rounds = rounds[-5:]
+    last5_methods = methods[-5:]
+    last5_results = results[-5:]
+    n5 = len(last5_rounds)
+    r1_ending_rate_5 = sum(1 for r in last5_rounds if r == 1) / n5
+    decision_rate_5 = sum(1 for m in last5_methods if m == "DEC") / n5
+    last5_wins = sum(1 for r in last5_results if r in ("W", "WIN"))
+    if last5_wins > 0:
+        sub_win_rate_5 = sum(
+            1 for i in range(n5)
+            if last5_results[i] in ("W", "WIN") and last5_methods[i] == "SUB"
+        ) / last5_wins
+        ko_win_rate_5 = sum(
+            1 for i in range(n5)
+            if last5_results[i] in ("W", "WIN") and last5_methods[i] == "KO/TKO"
+        ) / last5_wins
+    else:
+        sub_win_rate_5 = 0.0
+        ko_win_rate_5 = 0.0
+
+    def is_loss(i):
+        return results[i] in ("L", "LOSS")
+    def is_finish_loss(i):
+        return is_loss(i) and methods[i] in ("KO/TKO", "SUB")
+    def is_r1_loss(i):
+        return is_loss(i) and rounds[i] == 1 and methods[i] in ("KO/TKO", "SUB")
+
+    last3_idx = range(max(0, n - 3), n)
+    last5_idx = range(max(0, n - 5), n)
+    recent_3_finish_loss_rate = sum(1 for i in last3_idx if is_finish_loss(i)) / max(1, len(last3_idx))
+    recent_5_finish_loss_rate = sum(1 for i in last5_idx if is_finish_loss(i)) / max(1, len(last5_idx))
+    recent_5_r1_loss_rate     = sum(1 for i in last5_idx if is_r1_loss(i))     / max(1, len(last5_idx))
+
+    # ── FIGHT-DENOMINATOR pace stats (added 2026-04-30) ──
+    # Existing sub_win_rate_5 / ko_win_rate_5 use LAST-5-WINS as denominator,
+    # which over-weights fighters on losing skids who have few but stylistic
+    # wins (Morales: 3 UFC losses then 2 regional sub wins → "100% SUB
+    # last-5"). The per-FIGHT rates below use n5 (fights, max 5) as
+    # denominator regardless of W/L — the honest "is this fighter actually
+    # finishing fights at a high rate right now" signal.
+    sub_finishes_in_last5 = sum(
+        1 for i in range(n5)
+        if last5_results[i] in ("W", "WIN") and last5_methods[i] == "SUB"
+    )
+    ko_finishes_in_last5 = sum(
+        1 for i in range(n5)
+        if last5_results[i] in ("W", "WIN") and last5_methods[i] == "KO/TKO"
+    )
+    recent_5_sub_per_fight = sub_finishes_in_last5 / n5
+    recent_5_ko_per_fight = ko_finishes_in_last5 / n5
+    recent_5_finish_per_fight = (sub_finishes_in_last5 + ko_finishes_in_last5) / n5
+    recent_5_r1_finish_per_fight = sum(
+        1 for i in range(n5)
+        if last5_results[i] in ("W", "WIN")
+        and last5_rounds[i] == 1
+        and last5_methods[i] in ("KO/TKO", "SUB")
+    ) / n5
+
+    return {
+        "r1_ending_rate": r1_ending_rate,
+        "r1_ending_rate_5": r1_ending_rate_5,
+        "decision_rate": decision_rate,
+        "decision_rate_5": decision_rate_5,
+        "sub_win_rate_5": sub_win_rate_5,        # per-WIN rate — kept for model features
+        "ko_win_rate_5": ko_win_rate_5,          # per-WIN rate — kept for model features
+        "avg_fight_seconds": avg_fight_seconds,
+        "recent_3_finish_loss_rate": recent_3_finish_loss_rate,
+        "recent_5_finish_loss_rate": recent_5_finish_loss_rate,
+        "recent_5_r1_loss_rate": recent_5_r1_loss_rate,
+        # Fight-denominator stats — use these for betting gates / flag thresholds
+        # instead of the per-WIN versions above. Captures recent ACTIVITY, not
+        # just win-conditional style.
+        "recent_5_sub_per_fight": recent_5_sub_per_fight,
+        "recent_5_ko_per_fight": recent_5_ko_per_fight,
+        "recent_5_finish_per_fight": recent_5_finish_per_fight,
+        "recent_5_r1_finish_per_fight": recent_5_r1_finish_per_fight,
+        "wins_in_last_5": sum(1 for r in last5_results if r in ("W", "WIN")),
+    }
+
+
+# ============================================================
 # ELO COMPUTATION
 # ============================================================
 
@@ -602,9 +732,6 @@ def build_live_profile(fighter_name: str) -> Optional[dict]:
     sos = (avg_opp - 1500) / 200 if opp_elos else 0
 
     # Compute opponent-quality features from the full-career cascade above.
-    # No more training-snapshot override: the UFC-only cascade was unfair to
-    # fighters with strong regional careers (Valentin 11-6 overall showed as
-    # 1266 because we only saw his 0-3 UFC run).
     sos = (avg_opp - 1500) / 200 if opp_elos else 0.0
     if losses > 0:
         loss_opp_vals = [e for i, e in enumerate(opp_elos)
@@ -617,11 +744,27 @@ def build_live_profile(fighter_name: str) -> Optional[dict]:
         losses_to_elite = 0
         quality_of_losses = 0.0
 
-    # Preserve the "is in UFC training data" flag for downstream warnings.
+    # The model was trained on UFC-only Elo from enriched_fighters.csv. Feeding
+    # it the full-career cascade Elo at predict time is a distribution mismatch
+    # (Buchecha's ONE Championship career inflated his cascade Elo by +230 vs
+    # training, biasing every prediction). Override Elo features with training
+    # values when the fighter is in training data; debutants keep the cascade
+    # estimate as a fallback.
     snap = _get_training_snapshot(fighter_name)
     is_ufc_debutant = snap is None
-    if snap is not None and not weight_class and "weight_class" in snap:
-        weight_class = snap["weight_class"]
+    if snap is not None:
+        if not weight_class and "weight_class" in snap:
+            weight_class = snap["weight_class"]
+        if "elo" in snap: elo = snap["elo"]
+        if "competition_level" in snap: comp = snap["competition_level"]
+        if "avg_opp_elo" in snap: avg_opp = snap["avg_opp_elo"]
+        if "recent_opp_elo" in snap: recent_opp = snap["recent_opp_elo"]
+        if "best_win_elo" in snap: best_win = snap["best_win_elo"]
+        if "worst_loss_elo" in snap: worst_loss = snap["worst_loss_elo"]
+        if "strength_of_schedule" in snap: sos = snap["strength_of_schedule"]
+        if "avg_loss_opp_elo" in snap: avg_loss_elo = snap["avg_loss_opp_elo"]
+        if "losses_to_elite" in snap: losses_to_elite = int(snap["losses_to_elite"])
+        if "quality_of_losses" in snap: quality_of_losses = snap["quality_of_losses"]
 
     return {
         "weight_class": weight_class,
@@ -673,6 +816,9 @@ def build_live_profile(fighter_name: str) -> Optional[dict]:
         "age_decline_signal": max(0, age - 32) * max(0, -streak) * 0.1,
         "age_weighted_form": form_3 * (1.0 - max(0, age - 30) * 0.05),
         "career_mileage": total_fights * max(0, age - 28) * 0.01,
+        # Fight-pace signature — must mirror build_training_data.py exactly
+        # so the model sees the same feature distribution at predict time.
+        **compute_pace_signature(fights),
     }
 
 
@@ -700,6 +846,10 @@ def build_profile_manual(stats: dict) -> dict:
         "avg_loss_opp_elo": 1500, "losses_to_elite": 0, "quality_of_losses": 0,
         "age": 30, "age_decline_signal": 0, "age_weighted_form": 0.5, "career_mileage": 0,
         "weight_class": None,
+        "r1_ending_rate": 0.0, "r1_ending_rate_5": 0.0, "decision_rate": 0.0,
+        "avg_fight_seconds": 600.0,
+        "recent_3_finish_loss_rate": 0.0, "recent_5_finish_loss_rate": 0.0,
+        "recent_5_r1_loss_rate": 0.0,
     }
     defaults.update(stats)
     return defaults

@@ -326,6 +326,11 @@ class FighterStats:
         # Per-fight round info (for computing per-minute rates)
         self.total_fight_seconds = []
 
+        # Per-fight round + method history — used for fight-pace signature
+        # features (R1-ending rate, decision rate, finish-loss recency).
+        self.round_finished_history = []   # int per fight (1, 2, 3, 4, 5)
+        self.method_history = []            # 'KO/TKO' | 'SUB' | 'DEC' | 'OTHER'
+
         # Fight dates (for layoff calculation)
         self.fight_dates = []
 
@@ -438,6 +443,95 @@ class FighterStats:
             'age_weighted_form': (avg(self.results[-3:]) if self.results else 0.5) * (1.0 - max(0, age - 30) * 0.05),
             # career_mileage = total wear and tear (many fights + old = worn down)
             'career_mileage': n * max(0, age - 28) * 0.01,
+            # Fight-pace signature — does this fighter end fights early (chaos)
+            # or grind to decision? Captures the "R1 specialist" archetype the
+            # cumulative been_finished_rate misses (a fighter on a 3-of-4 R1
+            # finish-loss skid looks identical to a chinny journeyman without
+            # these features).
+            **self._pace_signature_features(),
+        }
+
+    def _pace_signature_features(self) -> dict:
+        """Seven features capturing fight-pace signature and recent-finish trajectory.
+
+        Causal: only uses past fights (called from snapshot, before update).
+        """
+        n = len(self.round_finished_history)
+        if n == 0:
+            return {
+                'r1_ending_rate': 0.0,
+                'r1_ending_rate_5': 0.0,
+                'decision_rate': 0.0,
+                'decision_rate_5': 0.0,
+                'sub_win_rate_5': 0.0,
+                'ko_win_rate_5': 0.0,
+                'avg_fight_seconds': 600.0,  # 10 min default
+                'recent_3_finish_loss_rate': 0.0,
+                'recent_5_finish_loss_rate': 0.0,
+                'recent_5_r1_loss_rate': 0.0,
+            }
+
+        rounds = self.round_finished_history
+        methods = self.method_history
+        results = self.results
+
+        # Career pace signature
+        r1_endings = sum(1 for r in rounds if r == 1)
+        decisions = sum(1 for m in methods if m == 'DEC')
+        r1_ending_rate = r1_endings / n
+        decision_rate = decisions / n
+        avg_fight_seconds = float(np.mean(self.total_fight_seconds)) if self.total_fight_seconds else 600.0
+
+        # Last-5 pace signature — captures CURRENT style, not career average.
+        # Crucial for fighters with promotion/era shifts (Page's Bellator vs UFC
+        # divergence: career r1=46% but recent r1=0%).
+        last5_rounds = rounds[-5:]
+        last5_methods = methods[-5:]
+        last5_results = results[-5:]
+        n5 = len(last5_rounds)
+        r1_ending_rate_5 = sum(1 for r in last5_rounds if r == 1) / n5
+        decision_rate_5 = sum(1 for m in last5_methods if m == 'DEC') / n5
+        # Win-method rates over last 5 (only count wins in denominator)
+        last5_wins = sum(1 for r in last5_results if r == 1)
+        if last5_wins > 0:
+            sub_win_rate_5 = sum(
+                1 for i in range(n5)
+                if last5_results[i] == 1 and last5_methods[i] == 'SUB'
+            ) / last5_wins
+            ko_win_rate_5 = sum(
+                1 for i in range(n5)
+                if last5_results[i] == 1 and last5_methods[i] == 'KO/TKO'
+            ) / last5_wins
+        else:
+            sub_win_rate_5 = 0.0
+            ko_win_rate_5 = 0.0
+
+        # Recency of getting finished (loss + KO/SUB method)
+        def is_finish_loss(i):
+            return (i < len(results) and results[i] == 0
+                    and methods[i] in ('KO/TKO', 'SUB'))
+        def is_r1_loss(i):
+            return (i < len(results) and results[i] == 0
+                    and rounds[i] == 1
+                    and methods[i] in ('KO/TKO', 'SUB'))
+
+        last3_idx = range(max(0, n - 3), n)
+        last5_idx = range(max(0, n - 5), n)
+        recent_3_finish_loss_rate = sum(1 for i in last3_idx if is_finish_loss(i)) / max(1, len(last3_idx))
+        recent_5_finish_loss_rate = sum(1 for i in last5_idx if is_finish_loss(i)) / max(1, len(last5_idx))
+        recent_5_r1_loss_rate    = sum(1 for i in last5_idx if is_r1_loss(i))    / max(1, len(last5_idx))
+
+        return {
+            'r1_ending_rate': r1_ending_rate,
+            'r1_ending_rate_5': r1_ending_rate_5,
+            'decision_rate': decision_rate,
+            'decision_rate_5': decision_rate_5,
+            'sub_win_rate_5': sub_win_rate_5,
+            'ko_win_rate_5': ko_win_rate_5,
+            'avg_fight_seconds': avg_fight_seconds,
+            'recent_3_finish_loss_rate': recent_3_finish_loss_rate,
+            'recent_5_finish_loss_rate': recent_5_finish_loss_rate,
+            'recent_5_r1_loss_rate': recent_5_r1_loss_rate,
         }
 
     def _empty_snapshot(self, age: float = DEFAULT_AGE):
@@ -473,15 +567,33 @@ class FighterStats:
         d['age_decline_signal'] = 0.0
         d['age_weighted_form'] = 0.5 * (1.0 - max(0, age - 30) * 0.05)
         d['career_mileage'] = 0.0
+        # Fight-pace signature defaults for fighters with no history
+        d['r1_ending_rate'] = 0.0
+        d['r1_ending_rate_5'] = 0.0
+        d['decision_rate'] = 0.0
+        d['avg_fight_seconds'] = 600.0
+        d['recent_3_finish_loss_rate'] = 0.0
+        d['recent_5_finish_loss_rate'] = 0.0
+        d['recent_5_r1_loss_rate'] = 0.0
+        d['decision_rate_5'] = 0.0
+        d['sub_win_rate_5'] = 0.0
+        d['ko_win_rate_5'] = 0.0
         return d
 
-    def update(self, row, fight_seconds, opponent_elo=1500):
+    def update(self, row, fight_seconds, opponent_elo=1500, round_finished=None):
         """Update stats AFTER a fight."""
         self.fights.append(row)
         self.opponent_elos.append(opponent_elo)
 
         result = row['res']
         method = normalize_method(row['method'])
+        # Track round_finished + method for fight-pace signature features
+        try:
+            rf = int(round_finished) if round_finished is not None else int(row.get('round_finished', 3))
+        except (ValueError, TypeError):
+            rf = 3
+        self.round_finished_history.append(rf)
+        self.method_history.append(method)
 
         if result == 'W':
             self.wins += 1
@@ -607,7 +719,8 @@ def build_enriched_csv():
             # Find opponent's pre-fight Elo
             opponent = [f for f in fighters_in_fight if f != fighter]
             opp_elo = pre_elos[opponent[0]] if opponent else 1500
-            fighter_stats[fighter].update(row, fight_seconds, opponent_elo=opp_elo)
+            fighter_stats[fighter].update(row, fight_seconds, opponent_elo=opp_elo,
+                                           round_finished=round_fin)
 
         processed += 1
         if processed % 1000 == 0:
@@ -715,6 +828,63 @@ def build_enriched_csv():
         a_sos = a.get('strength_of_schedule', 0)
         b_sos = b.get('strength_of_schedule', 0)
         matchup['schedule_gap'] = a_sos - b_sos
+
+        # ── R1-CHAOS INTERACTION FEATURES ──
+        # XGBoost individually weights a_r1_ending_rate and b_r1_ending_rate
+        # at ~3% importance each. To predict "high R1 finish prob," it needs
+        # to see BOTH simultaneously high — but it has to discover that
+        # interaction across 30 features. Pre-computing the product as a
+        # single scalar gives the model a clean decision boundary it can
+        # commit to. Same for grinder × grinder, etc.
+        #
+        # Concrete examples that should fire HIGH on r1_chaos_score:
+        #   McMillen (0.90) × Zecchini (0.75) = 0.68
+        #   McVey (0.89) × Dumas (0.50)       = 0.45
+        #   Buzukja (0.33) × Barbosa (0.85)   = 0.28
+        # And LOW for grinder vs grinder matchups (0.10 × 0.05 = 0.005).
+        a_r1 = a.get('r1_ending_rate', 0.0)
+        b_r1 = b.get('r1_ending_rate', 0.0)
+        a_r1_5 = a.get('r1_ending_rate_5', 0.0)
+        b_r1_5 = b.get('r1_ending_rate_5', 0.0)
+        a_dec = a.get('decision_rate', 0.0)
+        b_dec = b.get('decision_rate', 0.0)
+        a_avg_sec = a.get('avg_fight_seconds', 600.0)
+        b_avg_sec = b.get('avg_fight_seconds', 600.0)
+
+        matchup['r1_chaos_score']         = a_r1 * b_r1
+        matchup['r1_chaos_score_recent']  = a_r1_5 * b_r1_5
+        matchup['both_r1_specialists']    = 1.0 if (a_r1 >= 0.40 and b_r1 >= 0.40) else 0.0
+        matchup['min_r1_ending_rate']     = min(a_r1, b_r1)
+        matchup['both_grinders_score']    = a_dec * b_dec
+        matchup['combined_avg_fight_secs'] = (a_avg_sec + b_avg_sec) / 2.0
+        # Joint finish-pace: 1 - (decision rate of slower of the two)
+        # If even the more decision-prone fighter finishes a lot, the fight
+        # is a finish-fest.
+        matchup['joint_finish_propensity'] = 1.0 - max(a_dec, b_dec)
+
+        # ── SINGLE-SIDE SPECIALIST FEATURES (added 2026-04-30) ──
+        # The min/product matchup features above are designed for joint-extreme
+        # fights (both R1 specialists). They miss the case where ONE fighter
+        # is an extreme finisher and the other is average — the model loses
+        # the signal to the lower side. Buzukja (33% R1) vs Barbosa (85% R1)
+        # → r1_chaos_score=0.28, both_specialists=0; model sees "average
+        # matchup" despite Barbosa's 5-fight R1 KO streak being a load-bearing
+        # signal. Adding max-side features so XGBoost can pick up single-side
+        # specialists as a separate decision branch.
+        a_ko_5 = a.get('ko_win_rate_5', 0.0)
+        b_ko_5 = b.get('ko_win_rate_5', 0.0)
+        a_sub_5 = a.get('sub_win_rate_5', 0.0)
+        b_sub_5 = b.get('sub_win_rate_5', 0.0)
+        matchup['max_r1_ending_rate']     = max(a_r1, b_r1)
+        matchup['max_r1_ending_rate_5']   = max(a_r1_5, b_r1_5)
+        matchup['max_ko_win_rate_5']      = max(a_ko_5, b_ko_5)
+        matchup['max_sub_win_rate_5']     = max(a_sub_5, b_sub_5)
+        # Hard binary flag for single-side R1 specialist (≥0.70) when opponent
+        # isn't a pure decision-fighter (≤0.50 dec). Captures Barbosa-style
+        # without firing on opponents who neutralize via wrestling-decision.
+        max_r1 = max(a_r1, b_r1)
+        min_dec = min(a_dec, b_dec)
+        matchup['single_side_r1_specialist'] = 1.0 if (max_r1 >= 0.70 and min_dec <= 0.50) else 0.0
 
         # ── STYLE & INTERACTION FEATURES ──
         # These need BOTH fighters — can't be computed per-fighter alone.

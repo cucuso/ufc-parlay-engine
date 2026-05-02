@@ -1,36 +1,40 @@
 """
-UFC Fight Night: Sterling vs. Zalal — April 25, 2026
+UFC Fight Night: Della Maddalena vs. Prates — May 2, 2026
+RAC Arena, Perth, Australia
 Full card predictions via the calibrated ML model.
 """
-from prediction_store import run_card_and_save
+from prediction_store import run_card_and_save, print_bettable_card
 
-EVENT_NAME = "UFC Fight Night: Sterling vs. Zalal"
-EVENT_DATE = "2026-04-25"
+EVENT_NAME = "UFC Fight Night: Della Maddalena vs. Prates"
+EVENT_DATE = "2026-05-02"
 
 CARD = [
-    # (fighter_a, fighter_b, weight_class, is_main_event)
-    ("Aljamain Sterling",   "Youssef Zalal",          "Featherweight",       True),
-    ("Norma Dumont",        "Joselyne Edwards",       "W-Bantamweight",      True),
-    ("Rafa Garcia",         "Alexander Hernandez",    "Lightweight",         True),
-    ("Davey Grant",         "Adrian Luna Martinetti", "Bantamweight",        True),
-    ("Montel Jackson",      "Raoni Barcelos",         "Bantamweight",        True),
-    ("Marcus Buchecha",     "Ryan Spann",             "Heavyweight",         False),
-    ("Rodolfo Vieira",      "Eric McConico",          "Middleweight",        False),
-    ("Jackson McVey",       "Sedriques Dumas",        "Middleweight",        False),
-    ("Mayra Bueno Silva",   "Michelle Montague",      "W-Bantamweight",      False),
-    ("Jafel Filho",         "Cody Durden",            "Flyweight",           False),
-    ("Francis Marshall",    "Lucas Brennan",          "Lightweight",         False),
-    ("Max Griffin",         "Victor Valenzuela",      "Welterweight",        False),
-    ("Talita Alencar",      "Julia Polastri",         "W-Strawweight",       False),
+    # (fighter_a, fighter_b, weight_class, is_main_event_card)
+    # Main Card
+    ("Jack Della Maddalena", "Carlos Prates",         "Welterweight",     True),
+    ("Beneil Dariush",       "Quillan Salkilld",      "Lightweight",      True),
+    ("Tim Elliott",          "Steve Erceg",           "Flyweight",        True),
+    ("Marwan Rahiki",        "Ollie Schmid",          "Featherweight",    True),
+    ("Shamil Gaziev",        "Brando Pericic",        "Heavyweight",      True),
+    ("Tai Tuivasa",          "Louie Sutherland",      "Heavyweight",      True),
+    # Prelims
+    ("Cam Rowston",          "Robert Bryczek",        "Middleweight",     False),
+    ("Junior Tafa",          "Kevin Christian",       "Light Heavyweight",False),
+    ("Jacob Malkoun",        "Gerald Meerschaert",    "Middleweight",     False),
+    ("Colby Thicknesse",     "Vince Morales",         "Bantamweight",     False),
+    ("Ben Johnston",         "Wes Schultz",           "Middleweight",     False),
+    ("Jonathan Micallef",    "Themba Gorimbo",        "Welterweight",     False),
+    ("Dom Mar Fan",          "Kody Steele",           "Lightweight",      False),
 ]
 
 
 def main():
     print("=" * 95)
     print(f"  {EVENT_NAME.upper()} — {EVENT_DATE}")
+    print("  RAC Arena, Perth, Australia")
     print("  Full card predictions (calibrated ML model)")
     print("=" * 95)
-    results, _ = run_card_and_save(EVENT_NAME, EVENT_DATE, CARD)
+    results, snap_path = run_card_and_save(EVENT_NAME, EVENT_DATE, CARD)
 
     print("\n\n" + "=" * 95)
     print("  SUMMARY TABLE")
@@ -92,6 +96,9 @@ def main():
             print(f"    {na} vs {nb}: " + " | ".join(leans))
 
     print("\n" + "=" * 95)
+    # Bettable-card view (gate_picks output) so the bettor sees the
+    # post-gate buckets — same final layer used for prior cards.
+    print_bettable_card(snap_path)
 
 
 if __name__ == "__main__":
